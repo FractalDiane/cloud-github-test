@@ -47,6 +47,7 @@ def index(request):
             response = make_trello_request("DELETE", f"https://api.trello.com/1/cards/{queue[0][1]}")
             return "OK"
         elif "new_donation" in request.args:
+            print("NEW DONATION TEST")
             data = json.loads(request.form["data"])
             if data.get("verification_token") == os.environ["KOFI_VERIFICATION_TOKEN"] and data.get("type") == "Donation":
                 dono_name = data["from_name"]
